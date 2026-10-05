@@ -1,0 +1,58 @@
+{
+  "name": "erzsebet-telepi-desktop",
+  "version": "0.1.0",
+  "description": "Erzsébet-telepi Polgárőr Egyesület – asztali alkalmazás",
+  "main": "main.js",
+  "author": "Erzsébet-telepi Polgárőr Egyesület",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "44.5.1",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "hu.bp18polgarorseg.desktop",
+    "productName": "Erzsébet-telepi Polgárőr Egyesület",
+    "artifactName": "Erzsebet-telepi-Polgarorseg-${version}-${os}.${ext}",
+    "asar": true,
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json"
+    ],
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "category": "public.app-category.business"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
